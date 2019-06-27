@@ -1,0 +1,94 @@
+<% include partials/header.ejs %>
+    <div class="container">
+        <% if (message != '') { %>
+            <p class="text-center text-danger"><%= message %></p>
+        <% } %>
+        <form style="margin-bottom: 102px" name="form" method="POST" action="/addCliente">
+            <h6 style="margin-top: 64px">Dados Pessoais</h6>
+            <div class="form-group">
+              <label for="nomeInput" class="bmd-label-floating">Nome</label>
+              <input type="text" class="form-control" id="nomeInput" name="nome">
+              <span class="bmd-help">Nome Completo</span>
+            </div>
+            <div class="form-group">
+                <label for="cpfInput" class="bmd-label-floating">CPF</label>
+                <input type="text" class="form-control" id="cpfInput" name="cpf">
+                <span class="bmd-help">Ex.: 123.456.789-00</span>
+            </div>
+            <div class="form-group">
+                <label for="telefoneInput" class="bmd-label-floating">Telefone</label>
+                <input type="text" class="form-control" id="telefoneInput" name="telefone">
+                <span class="bmd-help">Ex.: (31) 91234-5678</span>
+            </div>
+            <div class="form-group">
+              <label for="sexoInput" class="bmd-label-floating">Sexo</label>
+              <select class="form-control" id="sexoInput">
+                <option value="M">Masculino</option>
+                <option value="F">Feminino</option>
+              </select>
+            </div>
+            <div class="form-group">
+                <label for="dataNascInput" class="bmd-label-floating">Data de Nascimento</label>
+                <input type="text" class="form-control" id="dataNascInput" name="dataNasc">
+                <span class="bmd-help">Ex.: 21/06/1990</span>
+            </div>
+            <h6 style="margin-top: 64px">Endereço</h6>
+            <div class="form-group">
+                <label for="ruaInput" class="bmd-label-floating">Rua</label>
+                <input type="text" class="form-control" id="ruaInput" name="rua">
+                <span class="bmd-help">Ex.: Av. Marisa de Souza Mendes</span>
+            </div>
+            <div class="form-group">
+                <label for="numeroInput" class="bmd-label-floating">Número</label>
+                <input type="number" class="form-control" id="numeroInput" name="numero">
+                <span class="bmd-help">Ex.: 1234</span>
+            </div>
+            <div class="form-group">
+                <label for="bairroInput" class="bmd-label-floating">Bairro</label>
+                <input type="text" class="form-control" id="bairroInput" name="bairro">
+                <span class="bmd-help">Ex.: Siderurgia</span>
+            </div>
+            <div class="form-group">
+                <label for="cidadeInput" class="bmd-label-floating">Cidade</label>
+                <input type="text" class="form-control" id="cidadeInput" name="cidade">
+                <span class="bmd-help">Ex.: Ouro Branco</span>
+            </div>
+            <div class="form-group">
+                <label for="estadoInput" class="bmd-label-floating">Estado</label>
+                <select id="estadoInput" name="estado" class="form-control">
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-raised float-right">Salvar</button>
+            <button class="btn btn-default float-right">Cancelar</button>
+          </form>
+    </div>
+</div>
+</body>
+</html>
