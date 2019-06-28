@@ -1,0 +1,47 @@
+<% include partials/header.ejs %>
+<h2 class="header-title">Produtos</h2>
+    <div class="table-wrapper">
+        <% if (produtos.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Código</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Preço</th>
+                        <th scope="col">Validade</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% produtos.forEach((produto, index) => { %>
+                        <tr>
+                            <th scope="row"><%= produto.codigo %></th>
+                            <td><%= produto.nome %></td>
+                            <td><%= produto.marca %></td>
+                            <td>R$ <%= produto.preco.toFixed(2) %></td>
+                            <td><%= moment(produto.validade).format('L') %> (<%= moment(produto.validade, "YYYYMMDD").fromNow() %>)</td>
+                            <td>
+                                <button type="button" class="btn btn-primary bmd-btn-icon">
+                                    <i class="material-icons">edit</i>
+                                </button>
+                                <button type="button" class="btn bmd-btn-icon ">
+                                    <i class="material-icons btn-delete">delete</i>
+                                </button>
+                                <!-- <a href="/edit/<%= produto.codigo %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Editar</a> -->
+                                <!-- <a href="/delete/<%= produto.codigo %>" class="btn btn-sm btn-danger">Excluir</a> -->
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">Nenhum produto encontrado. Clique <a href="/addProduto">aqui</a> para adicionar um produto.</p>
+        <% } %>
+    </div>
+</div>
+<button type="button" class="btn bmd-btn-fab fab" onclick="window.location = '/addProduto'">
+    <i class="material-icons">add</i>
+</button>
+</body>
+</html>

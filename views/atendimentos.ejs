@@ -1,0 +1,49 @@
+<% include partials/header.ejs %>
+<h2 class="header-title">Atendimentos</h2>
+    <div class="table-wrapper">
+        <% if (atendimentos.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Código</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Valor</th>
+                        <th scope="col">Duração</th>
+                        <th scope="col">Hora do Atendimento</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% atendimentos.forEach((atendimento, index) => { %>
+                        <tr>
+                            <th scope="row"><%= atendimento.codigo %></th>
+                            <td><%= atendimento.nome %></td>
+                            <td><%= atendimento.descricao %></td>
+                            <td>R$ <%= atendimento.valor.toFixed(2) %></td>
+                            <td><%= atendimento.duracao %></td>
+                            <td><%= moment(atendimento.horaAtendimento).format('L') %> (<%= moment(atendimento.horaAtendimento, "YYYYMMDD").fromNow() %>)</td>
+                            <td>
+                                <button type="button" class="btn btn-primary bmd-btn-icon">
+                                    <i class="material-icons">edit</i>
+                                </button>
+                                <button type="button" class="btn bmd-btn-icon ">
+                                    <i class="material-icons btn-delete">delete</i>
+                                </button>
+                                <!-- <a href="/edit/<%= atendimento.codigo %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Editar</a> -->
+                                <!-- <a href="/delete/<%= atendimento.codigo %>" class="btn btn-sm btn-danger">Excluir</a> -->
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">Nenhum atendimento encontrado. Clique <a href="/addAtendimento">aqui</a> para adicionar um atendimento.</p>
+        <% } %>
+    </div>
+</div>
+<button type="button" class="btn bmd-btn-fab fab" onclick="window.location = '/addAtendimento'">
+    <i class="material-icons">add</i>
+</button>
+</body>
+</html>

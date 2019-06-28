@@ -3,6 +3,7 @@ const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const path = require('path');
+const moment = require('moment');
 const app = express();
 
 const { getHomePage } = require('./routes/index');
@@ -41,6 +42,9 @@ app.use(fileUpload()); // configure fileupload
 // Rotas do App
 app.get('/', getHomePage); // Página Inicial
 
+// Atendimentos
+app.get('/atendimentos', getAtendimentosPage); // Consulta de Atendimentos
+
 // Clientes
 app.get('/clientes', getClientePage); // Consulta de Clientes
 app.get('/addCliente', addClientePage); // Adicionar Cliente
@@ -51,9 +55,6 @@ app.post('/edit/:id', editPlayer);
 
 // Produtos
 app.get('/produtos', getProdutosPage); // Consulta de Produtos
-
-// Atendimentos
-app.get('/atendimentos', getAtendimentosPage); // Consulta de Atendimentos
 
 // Listener do Servidor Local
 app.listen(port, () => {

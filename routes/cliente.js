@@ -1,6 +1,8 @@
 const fs = require('fs');
 const queries = require('./../sql/queries');
 
+
+
 module.exports = {
     getClientePage: (req, res) => {
         db.query(queries.getClientesQuery, (err, result) => {
@@ -106,9 +108,17 @@ module.exports = {
         });
     },
 
-
     // openAddClientePage() {
     //     console.log("Hello World");
     //     window.location = '/addCliente';
     // }
 };
+
+formatSexo = function(sexo){
+    switch (sexo) {
+        case "M":
+            return "Masculino";
+        case "F":
+            return "Feminino";
+    }
+}
