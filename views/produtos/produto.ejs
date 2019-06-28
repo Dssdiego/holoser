@@ -22,14 +22,12 @@
                             <td>R$ <%= produto.preco.toFixed(2) %></td>
                             <td><%= moment(produto.validade).format('L') %> (<%= moment(produto.validade, "YYYYMMDD").fromNow() %>)</td>
                             <td>
-                                <button type="button" class="btn btn-primary bmd-btn-icon">
+                                <button type="button" class="btn btn-primary bmd-btn-icon" onclick="window.location = '/editProduto/<%= produto.codigo %>'">
                                     <i class="material-icons">edit</i>
                                 </button>
-                                <button type="button" class="btn bmd-btn-icon ">
+                                <button type="button" class="btn bmd-btn-icon" onclick="window.location = '/deleteProduto/<%= produto.codigo %>'">
                                     <i class="material-icons btn-delete">delete</i>
                                 </button>
-                                <!-- <a href="/edit/<%= produto.codigo %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Editar</a> -->
-                                <!-- <a href="/delete/<%= produto.codigo %>" class="btn btn-sm btn-danger">Excluir</a> -->
                             </td>
                         </tr>
                     <% }) %>

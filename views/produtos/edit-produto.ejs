@@ -1,0 +1,33 @@
+<% include ./../partials/header.ejs %>
+    <div class="container">
+        <% if (message != '') { %>
+            <p class="text-center text-danger"><%= message %></p>
+        <% } %>
+        <form style="margin-bottom: 102px" name="form" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="nomeInput" class="bmd-label-floating">Nome</label>
+              <input type="text" class="form-control" id="nomeInput" name="nome" value="<%= produto.nome %>" required>
+              <span class="bmd-help">Nome do Produto</span>
+            </div>
+            <div class="form-group">
+                <label for="marcaInput" class="bmd-label-floating">Marca</label>
+                <input type="text" class="form-control" id="marcaInput" name="marca" value="<%= produto.marca %>" required>
+                <span class="bmd-help">Ex.: Monange</span>
+            </div>
+            <div class="form-group">
+                <label for="precoInput" class="bmd-label-floating">Preco</label>
+                <input type="number" class="form-control" id="precoInput" name="preco" value="<%= produto.preco %>" required>
+                <span class="bmd-help">Ex.: 125</span>
+            </div>
+            <div class="form-group">
+                <label for="validadeInput" class="bmd-label-floating">Validade</label>
+                <input type="text" class="form-control" id="validadeInput" name="validade" value="<%= produto.validade %>" required>
+                <span class="bmd-help">Ex.: 1990-06-21</span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-raised float-right">Salvar</button>
+            <button type="button" class="btn btn-default float-right" onclick="window.history.back()">Cancelar</button>
+          </form>
+    </div>
+</div>
+</body>
+</html>

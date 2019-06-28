@@ -7,9 +7,10 @@ const app = express();
 
 const { getHomePage } = require('./routes/index');
 const { getClientePage, addClientePage, addCliente, deleteCliente, editCliente, editClientePage } = require('./routes/cliente');
-const { getProdutosPage } = require('./routes/produto');
+const { getProdutosPage, addProdutoPage, addProduto, deleteProduto, editProdutoPage, editProduto } = require('./routes/produto');
+const { getAgendamentosPage } = require('./routes/agendamento');
 const { getAtendimentosPage } = require('./routes/atendimento');
-const { getAgendamentosPage, getClientePorLocalPage, getVencimentoProdutosPage } = require('./routes/relatorios');
+const { getHistoricoPage, getClientePorLocalPage, getVencimentoProdutosPage } = require('./routes/relatorios');
 const port = 3000;
 
 // Cria Conexão com o BD
@@ -42,6 +43,9 @@ app.use(fileUpload()); // configure fileupload
 // Rotas do App
 app.get('/', getHomePage); // Página Inicial
 
+// Agendamentos
+app.get('/agendamentos', getAgendamentosPage); // Consulta de Agendamentos
+
 // Atendimentos
 app.get('/atendimentos', getAtendimentosPage); // Consulta de Atendimentos
 
@@ -56,9 +60,15 @@ app.post('/editCliente/:id', editCliente);
 
 // Produtos
 app.get('/produtos', getProdutosPage); // Consulta de Produtos
+app.get('/addProduto', addProdutoPage); // Adicionar Produto
+app.get('/editProduto/:id', editProdutoPage); // Editar Cliente
+app.get('/deleteProduto/:id', deleteProduto); // Deletar Produto
+
+app.post('/addProduto', addProduto);
+app.post('/editProduto/:id', editProduto);
 
 // Relatórios
-app.get('/agendamentos', getAgendamentosPage); // Agendamentos
+app.get('/historico', getHistoricoPage); // Agendamentos
 app.get('/cliente-por-local', getClientePorLocalPage); // Cliente x Local
 app.get('/produtos-por-marca', getVencimentoProdutosPage); // Produtos x Marca
 

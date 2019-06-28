@@ -2,17 +2,17 @@ const moment = require('moment');
 const queries = require('./../sql/queries');
 
 module.exports = {
-    getAgendamentosPage: (req, res) => {
+    getHistoricoPage: (req, res) => {
         moment.locale('pt-br');
 
-        db.query(queries.getAgendamentosQuery, (err, result) => {
+        db.query(queries.getHistoricoQuery, (err, result) => {
             if (err) {
                 res.redirect('/');
             }
-            res.render('relatorios/agendamentos.ejs', {
-                title: "Holoser | Agendamentos"
+            res.render('relatorios/historico.ejs', {
+                title: "Holoser | Historico"
                 ,moment: moment
-                ,agendamentos: result
+                ,historico: result
             });
         });
     },

@@ -29,6 +29,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li <% if (title === 'Holoser') { %>class="active" <% } %> ><a class="nav-link" href="/">Página Inicial</a></li>
+                <li <% if (title === 'Holoser | Agendamentos') { %>class="active" <% } %> ><a class="nav-link" href="/agendamentos">Agendamentos</a></li>
                 <li <% if (title === 'Holoser | Atendimentos') { %>class="active" <% } %> ><a class="nav-link" href="/atendimentos">Atendimentos</a></li>
                 <li <% if (title === 'Holoser | Clientes') { %>class="active" <% } %> ><a class="nav-link" href="/clientes">Clientes</a></li>
                 <li <% if (title === 'Holoser | Produtos') { %>class="active" <% } %> ><a class="nav-link" href="/produtos">Produtos</a></li>
@@ -39,7 +40,8 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <h6 class="dropdown-header">Atendimentos</h6>
-                        <a class="dropdown-item" href="agendamentos">Agendamentos</a>
+                        <!-- <a class="dropdown-item" href="agendamentos">Agendamentos</a> -->
+                        <a class="dropdown-item" href="historico">Histórico</a>
                         <div class="dropdown-divider"></div>
                         <h6 class="dropdown-header">Clientes</h6>
                         <a class="dropdown-item" href="cliente-por-local">Cliente x Local</a>

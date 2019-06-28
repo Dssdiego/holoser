@@ -1,0 +1,40 @@
+<% include ./../partials/header.ejs %>
+<h2 class="header-title">Histórico</h2>
+    <div class="table-wrapper">
+        <% if (historico.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Data</th>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Serviço</th>
+                        <th scope="col">Duração</th>
+                        <th scope="col">Produto(s)</th>
+                        <th scope="col">Custo</th>
+                        <th scope="col">Receita</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% historico.forEach((cliente, index) => { %>
+                        <tr>
+                            <td><%= moment(cliente.hora_atendimento).format('L HH:mm:ss') %></td>
+                            <td><%= cliente.nome %></td>
+                            <td><%= cliente.servico %></td>
+                            <td><%= cliente.duracao %></td>
+                            <td><%= cliente.quantidade_produto %> x <%= cliente.produto %></td>
+                            <td>R$ <%= cliente.custo.toFixed(2) %></td>
+                            <td>R$ <%= cliente.receita.toFixed(2) %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <div class="empty-state">
+                <img src="./../images/sad_emoji.png" alt="" width="200" height="200">
+                <h3>Histórico Vazio...</h3>
+            </div>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>
