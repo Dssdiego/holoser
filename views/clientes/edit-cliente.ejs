@@ -1,10 +1,10 @@
-<% include partials/header.ejs %>
+<% include ./../partials/header.ejs %>
 <div class="container">
     <% if (message) { %>
         <p class="text-center text-danger"><%= message %></p>
     <% } %>
 
-    <% if (player) { %>
+    <% if (cliente) { %>
         <form class="add-player-form" action="" method="post" enctype="multipart/form-data">
             <div class="form-row">
                 <div class="form-group col-md-4">
@@ -42,10 +42,13 @@
                     </select>
                 </div>
             </div>
-            <button type="submit" class="btn btn-success float-right">Update Player</button>
+            <button type="submit" class="btn btn-success float-right">Atualizar Cliente</button>
         </form>
     <% } else { %>
-        <p class="text-center">Player Not Found. Go <a href="/add">here</a> to add players.</p>
+        <div class="empty-state">
+            <img src="./../images/sad_emoji.png" alt="" width="200" height="200">
+            <h3>Cliente não encontrado. <br/> Clique <a href="/addCliente">aqui</a> para adicionar um cliente.</h3>
+        </div>
     <% } %>
 </div>
 </div>

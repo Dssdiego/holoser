@@ -1,22 +1,20 @@
 const fs = require('fs');
 const queries = require('./../sql/queries');
 
-
-
 module.exports = {
     getClientePage: (req, res) => {
         db.query(queries.getClientesQuery, (err, result) => {
             if (err) {
                 res.redirect('/');
             }
-            res.render('cliente.ejs', {
+            res.render('clientes/cliente.ejs', {
                 title: "Holoser | Clientes"
                 ,clientes: result
             });
         });
     },
     addClientePage: (req, res) => {
-        res.render('add-cliente.ejs', {
+        res.render('clientes/add-cliente.ejs', {
             title: "Holoser | Adicionar Cliente"
             ,message: ''
         });
@@ -53,28 +51,29 @@ module.exports = {
             res.redirect('/clientes');
         });
     },
-    editPlayerPage: (req, res) => {
-        let playerId = req.params.id;
-        let query = "SELECT * FROM `players` WHERE id = '" + playerId + "' ";
-        db.query(query, (err, result) => {
+    editClientePage: (req, res) => {
+        // let playerId = req.params.id;
+        // let query = "SELECT * FROM `players` WHERE id = '" + playerId + "' ";
+        values = [ [req.params.codigo] ]
+        db.query(queries.getClientePorCodigo, values, (err, result) => {
             if (err) {
                 return res.status(500).send(err);
             }
-            res.render('edit-cliente.ejs', {
-                title: "Edit  Player"
-                ,player: result[0]
+            res.render('clientes/edit-cliente.ejs', {
+                title: "Holoser | Editar Cliente"
+                ,cliente: result[0]
                 ,message: ''
             });
         });
     },
-    editPlayer: (req, res) => {
-        let playerId = req.params.id;
+    editCliente: (req, res) => {
+        let codigo = req.params.id;
         let first_name = req.body.first_name;
         let last_name = req.body.last_name;
         let position = req.body.position;
         let number = req.body.number;
 
-        let query = "UPDATE `players` SET `first_name` = '" + first_name + "', `last_name` = '" + last_name + "', `position` = '" + position + "', `number` = '" + number + "' WHERE `players`.`id` = '" + playerId + "'";
+        // let query = "UPDATE `players` SET `first_name` = '" + first_name + "', `last_name` = '" + last_name + "', `position` = '" + position + "', `number` = '" + number + "' WHERE `players`.`id` = '" + playerId + "'";
         // db.query(query, (err, result) => {
         //     if (err) {
         //         return res.status(500).send(err);
@@ -82,7 +81,7 @@ module.exports = {
         //     res.redirect('/');
         // });
     },
-    deletePlayer: (req, res) => {
+    deleteCliente: (req, res) => {
         let playerId = req.params.id;
         let getImageQuery = 'SELECT image from `players` WHERE id = "' + playerId + '"';
         let deleteUserQuery = 'DELETE FROM players WHERE id = "' + playerId + '"';
@@ -106,12 +105,7 @@ module.exports = {
                 });
             });
         });
-    },
-
-    // openAddClientePage() {
-    //     console.log("Hello World");
-    //     window.location = '/addCliente';
-    // }
+    }
 };
 
 formatSexo = function(sexo){

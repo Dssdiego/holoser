@@ -1,4 +1,4 @@
-<% include partials/header.ejs %>
+<% include ./../partials/header.ejs %>
     <div class="container">
         <% if (message != '') { %>
             <p class="text-center text-danger"><%= message %></p>
@@ -7,22 +7,22 @@
             <h6 style="margin-top: 64px">Dados Pessoais</h6>
             <div class="form-group">
               <label for="nomeInput" class="bmd-label-floating">Nome</label>
-              <input type="text" class="form-control" id="nomeInput" name="nome">
+              <input type="text" class="form-control" id="nomeInput" name="nome" required>
               <span class="bmd-help">Nome Completo</span>
             </div>
             <div class="form-group">
                 <label for="cpfInput" class="bmd-label-floating">CPF</label>
-                <input type="text" class="form-control" id="cpfInput" name="cpf">
+                <input type="text" class="form-control" id="cpfInput" name="cpf" required>
                 <span class="bmd-help">Ex.: 123.456.789-00</span>
             </div>
             <div class="form-group">
                 <label for="telefoneInput" class="bmd-label-floating">Telefone</label>
-                <input type="text" class="form-control" id="telefoneInput" name="telefone">
+                <input type="text" class="form-control" id="telefoneInput" name="telefone" required>
                 <span class="bmd-help">Ex.: (31) 91234-5678</span>
             </div>
             <div class="form-group">
               <label for="sexoInput" class="bmd-label-floating">Sexo</label>
-              <select class="form-control" id="sexoInput">
+              <select class="form-control" id="sexoInput" name="sexo" required>
                 <option value="M">Masculino</option>
                 <option value="F">Feminino</option>
               </select>
@@ -35,27 +35,27 @@
             <h6 style="margin-top: 64px">Endereço</h6>
             <div class="form-group">
                 <label for="ruaInput" class="bmd-label-floating">Rua</label>
-                <input type="text" class="form-control" id="ruaInput" name="rua">
+                <input type="text" class="form-control" id="ruaInput" name="rua" required>
                 <span class="bmd-help">Ex.: Av. Marisa de Souza Mendes</span>
             </div>
             <div class="form-group">
                 <label for="numeroInput" class="bmd-label-floating">Número</label>
-                <input type="number" class="form-control" id="numeroInput" name="numero">
+                <input type="number" class="form-control" id="numeroInput" name="numero" required>
                 <span class="bmd-help">Ex.: 1234</span>
             </div>
             <div class="form-group">
                 <label for="bairroInput" class="bmd-label-floating">Bairro</label>
-                <input type="text" class="form-control" id="bairroInput" name="bairro">
+                <input type="text" class="form-control" id="bairroInput" name="bairro" required>
                 <span class="bmd-help">Ex.: Siderurgia</span>
             </div>
             <div class="form-group">
                 <label for="cidadeInput" class="bmd-label-floating">Cidade</label>
-                <input type="text" class="form-control" id="cidadeInput" name="cidade">
+                <input type="text" class="form-control" id="cidadeInput" name="cidade" required>
                 <span class="bmd-help">Ex.: Ouro Branco</span>
             </div>
             <div class="form-group">
                 <label for="estadoInput" class="bmd-label-floating">Estado</label>
-                <select id="estadoInput" name="estado" class="form-control">
+                <select id="estadoInput" name="estado" class="form-control" required>
                     <option value="AC">Acre</option>
                     <option value="AL">Alagoas</option>
                     <option value="AP">Amapá</option>

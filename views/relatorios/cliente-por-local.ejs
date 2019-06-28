@@ -1,0 +1,32 @@
+<% include ./../partials/header.ejs %>
+<h2 class="header-title">Cliente x Local</h2>
+    <div class="table-wrapper">
+        <% if (clientes.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Cidade</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Quantidade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% clientes.forEach((cliente, index) => { %>
+                        <tr>
+                            <td><%= cliente.cidade %></td>
+                            <td><%= cliente.estado %></td>
+                            <td><%= cliente.qtde %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <div class="empty-state">
+                <img src="./../images/sad_emoji.png" alt="" width="200" height="200">
+                <h3>Clientes não encontrados. <br/> Clique <a href="/addCliente">aqui</a> para adicionar um cliente.</h3>
+            </div>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>

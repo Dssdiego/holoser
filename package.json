@@ -1,13 +1,13 @@
 {
-  "name": "node-mqsql-crud-app",
-  "version": "1.0.0",
+  "name": "holoser",
+  "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": ["Diego Seabra", "Túlio Reis"],
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -18,5 +18,8 @@
     "moment": "^2.24.0",
     "mysql": "^2.15.0",
     "req-flash": "0.0.3"
+  },
+  "engines": {
+    "node": "8.9.4"
   }
 }

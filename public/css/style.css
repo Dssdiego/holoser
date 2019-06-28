@@ -1,7 +1,20 @@
+/* Header */
+.header-title {
+    margin-left: 32px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+/* Tabelas */
 .table-wrapper {
   /* margin-top: 50px; */
   /* padding-left: 24px; */
   /* padding-right: 24px */
+}
+
+/* Botões */
+.btn-delete {
+    color: red;
 }
 
 .fab {
@@ -11,12 +24,19 @@
   background-color: salmon;
 }
 
-.header-title {
-    margin-left: 32px;
-    margin-top: 24px;
-    margin-bottom: 24px;
+/* Empty State */
+.empty-state {
+  margin-top: 12%;
+  /* background-color: blue; */
 }
 
-.btn-delete {
-    color: red;
+.empty-state img {
+  margin-bottom: 32px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.empty-state h3 {
+  text-align: center;
 }

@@ -1,4 +1,4 @@
-<% include partials/header.ejs %>
+<% include ./../partials/header.ejs %>
 <h2 class="header-title">Atendimentos</h2>
     <div class="table-wrapper">
         <% if (atendimentos.length > 0) {%>
@@ -10,7 +10,7 @@
                         <th scope="col">Descrição</th>
                         <th scope="col">Valor</th>
                         <th scope="col">Duração</th>
-                        <th scope="col">Hora do Atendimento</th>
+                        <!-- <th scope="col">Hora do Atendimento</th> -->
                         <th scope="col">Ações</th>
                     </tr>
                 </thead>
@@ -22,7 +22,7 @@
                             <td><%= atendimento.descricao %></td>
                             <td>R$ <%= atendimento.valor.toFixed(2) %></td>
                             <td><%= atendimento.duracao %></td>
-                            <td><%= moment(atendimento.horaAtendimento).format('L') %> (<%= moment(atendimento.horaAtendimento, "YYYYMMDD").fromNow() %>)</td>
+                            <!-- <td><%= moment(atendimento.horaAtendimento).format('L') %> (<%= moment(atendimento.horaAtendimento, "YYYYMMDD").fromNow() %>)</td> -->
                             <td>
                                 <button type="button" class="btn btn-primary bmd-btn-icon">
                                     <i class="material-icons">edit</i>

@@ -3,13 +3,13 @@ const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const path = require('path');
-const moment = require('moment');
 const app = express();
 
 const { getHomePage } = require('./routes/index');
-const { getClientePage, addClientePage, addCliente, deletePlayer, editPlayer, editPlayerPage } = require('./routes/cliente');
+const { getClientePage, addClientePage, addCliente, deleteCliente, editCliente, editClientePage } = require('./routes/cliente');
 const { getProdutosPage } = require('./routes/produto');
 const { getAtendimentosPage } = require('./routes/atendimento');
+const { getClientePorLocalPage, getVencimentoProdutosPage } = require('./routes/relatorios');
 const port = 2000;
 
 // Cria Conexão com o BD
@@ -48,13 +48,18 @@ app.get('/atendimentos', getAtendimentosPage); // Consulta de Atendimentos
 // Clientes
 app.get('/clientes', getClientePage); // Consulta de Clientes
 app.get('/addCliente', addClientePage); // Adicionar Cliente
-app.get('/edit/:id', editPlayerPage);
-app.get('/delete/:id', deletePlayer);
+app.get('/editCliente/:id', editClientePage);
+app.get('/deleteCliente/:id', deleteCliente);
+
 app.post('/addCliente', addCliente);
-app.post('/edit/:id', editPlayer);
+app.post('/editCliente/:id', editCliente);
 
 // Produtos
 app.get('/produtos', getProdutosPage); // Consulta de Produtos
+
+// Relatórios
+app.get('/cliente-por-local', getClientePorLocalPage); // Consulta de Produtos
+app.get('/produtos-por-marca', getVencimentoProdutosPage); // Consulta de Produtos
 
 // Listener do Servidor Local
 app.listen(port, () => {

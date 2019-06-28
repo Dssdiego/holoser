@@ -1,4 +1,4 @@
-<% include partials/header.ejs %>
+<% include ./../partials/header.ejs %>
 <h2 class="header-title">Clientes</h2>
     <div class="table-wrapper">
         <% if (clientes.length > 0) {%>
@@ -27,7 +27,7 @@
                             <td><%= cliente.cidade %></td>
                             <td><%= cliente.estado %></td>
                             <td>
-                                <button type="button" class="btn btn-primary bmd-btn-icon">
+                                <button type="button" class="btn btn-primary bmd-btn-icon" onclick="window.location = '/editCliente/<%= cliente.codigo %>'">
                                     <i class="material-icons">edit</i>
                                 </button>
                                 <button type="button" class="btn bmd-btn-icon ">

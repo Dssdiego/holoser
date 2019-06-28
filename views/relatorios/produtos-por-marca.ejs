@@ -1,0 +1,30 @@
+<% include ./../partials/header.ejs %>
+<h2 class="header-title">Produtos x Marca</h2>
+    <div class="table-wrapper">
+        <% if (produtos.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Quantidade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% produtos.forEach((produto, index) => { %>
+                        <tr>
+                            <td><%= produto.marca %></td>
+                            <td><%= produto.qtde %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <div class="empty-state">
+                <img src="./../images/sad_emoji.png" alt="" width="200" height="200">
+                <h3>Produtos não encontrados. <br/> Clique <a href="/addProduto">aqui</a> para adicionar um produto.</h3>
+            </div>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>
