@@ -10,7 +10,7 @@ const { getClientePage, addClientePage, addCliente, deleteCliente, editCliente, 
 const { getProdutosPage } = require('./routes/produto');
 const { getAtendimentosPage } = require('./routes/atendimento');
 const { getClientePorLocalPage, getVencimentoProdutosPage } = require('./routes/relatorios');
-const port = 5000;
+const port = 3000;
 
 // Cria Conexão com o BD
 const db = mysql.createConnection({
