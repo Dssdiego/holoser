@@ -10,5 +10,12 @@ module.exports.getProdutosQuery = "SELECT * FROM sath_produto";
 module.exports.getAtendimentosQuery = "SELECT * FROM sath_atendimento";
 
 // Relatórios
+
+// Atendimentos
+module.exports.getAgendamentosQuery = "SELECT c.nome, c.telefone, c.cidade, c.estado, ca.data_agendamento FROM sath_cliente_atendimento ca,sath_cliente c WHERE ca.codigo_cliente = c.codigo AND ca.hora_atendimento IS NULL OR ca.hora_atendimento = ''";
+
+// Clientes
 module.exports.getClientePorLocalQuery = "SELECT cidade, estado, count(*) as qtde FROM sath_cliente GROUP BY cidade, estado ORDER BY cidade ASC";
+
+// Produtos
 module.exports.getProdutoPorMarcaQuery = "SELECT marca, count(*) AS qtde FROM sath_produto GROUP BY marca";

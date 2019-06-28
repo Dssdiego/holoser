@@ -1,0 +1,36 @@
+<% include ./../partials/header.ejs %>
+<h2 class="header-title">Agendamentos</h2>
+    <div class="table-wrapper">
+        <% if (agendamentos.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Telefone</th>
+                        <th scope="col">Cidade</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% agendamentos.forEach((cliente, index) => { %>
+                        <tr>
+                            <td><%= cliente.nome %></td>
+                            <td><%= cliente.telefone %></td>
+                            <td><%= cliente.cidade %></td>
+                            <td><%= cliente.estado %></td>
+                            <td><%= moment(cliente.data_agendamento).format('L') %> (<%= moment(cliente.data_agendamento, "YYYYMMDD").fromNow() %>)</td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <div class="empty-state">
+                <img src="./../images/sad_emoji.png" alt="" width="200" height="200">
+                <h3>Clientes não encontrados. <br/> Clique <a href="/addCliente">aqui</a> para adicionar um cliente.</h3>
+            </div>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>

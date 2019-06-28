@@ -9,7 +9,7 @@ const { getHomePage } = require('./routes/index');
 const { getClientePage, addClientePage, addCliente, deleteCliente, editCliente, editClientePage } = require('./routes/cliente');
 const { getProdutosPage } = require('./routes/produto');
 const { getAtendimentosPage } = require('./routes/atendimento');
-const { getClientePorLocalPage, getVencimentoProdutosPage } = require('./routes/relatorios');
+const { getAgendamentosPage, getClientePorLocalPage, getVencimentoProdutosPage } = require('./routes/relatorios');
 const port = 3000;
 
 // Cria Conexão com o BD
@@ -48,8 +48,8 @@ app.get('/atendimentos', getAtendimentosPage); // Consulta de Atendimentos
 // Clientes
 app.get('/clientes', getClientePage); // Consulta de Clientes
 app.get('/addCliente', addClientePage); // Adicionar Cliente
-app.get('/editCliente/:id', editClientePage);
-app.get('/deleteCliente/:id', deleteCliente);
+app.get('/editCliente/:id', editClientePage); // Editar Cliente
+app.get('/deleteCliente/:id', deleteCliente); // Deletar Cliente
 
 app.post('/addCliente', addCliente);
 app.post('/editCliente/:id', editCliente);
@@ -58,8 +58,9 @@ app.post('/editCliente/:id', editCliente);
 app.get('/produtos', getProdutosPage); // Consulta de Produtos
 
 // Relatórios
-app.get('/cliente-por-local', getClientePorLocalPage); // Consulta de Produtos
-app.get('/produtos-por-marca', getVencimentoProdutosPage); // Consulta de Produtos
+app.get('/agendamentos', getAgendamentosPage); // Agendamentos
+app.get('/cliente-por-local', getClientePorLocalPage); // Cliente x Local
+app.get('/produtos-por-marca', getVencimentoProdutosPage); // Produtos x Marca
 
 // Listener do Servidor Local
 app.listen(process.env.PORT || port, () => {
