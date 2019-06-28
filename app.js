@@ -62,6 +62,6 @@ app.get('/cliente-por-local', getClientePorLocalPage); // Consulta de Produtos
 app.get('/produtos-por-marca', getVencimentoProdutosPage); // Consulta de Produtos
 
 // Listener do Servidor Local
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
 });
