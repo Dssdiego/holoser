@@ -1,5 +1,6 @@
 const fs = require('fs');
 const queries = require('./../sql/queries');
+const moment = require('moment');
 
 module.exports = {
     getClientePage: (req, res) => {
@@ -27,7 +28,7 @@ module.exports = {
             cpf: attr.cpf,
             telefone: attr.telefone,
             sexo: attr.sexo,
-            dataNascimento: attr.dataNasc,
+            dataNascimento: moment(convertDate(attr.dataNasc)).format('YYYY-MM-DD'),
             rua: attr.rua,
             numero: parseInt(attr.numero),
             bairro: attr.bairro,
@@ -50,8 +51,7 @@ module.exports = {
         });
     },
     editClientePage: (req, res) => {
-        // let playerId = req.params.id;
-        // let query = "SELECT * FROM `players` WHERE id = '" + playerId + "' ";
+        moment.locale('pt-br');
 
         values = [[req.params.id]]
         db.query(queries.getClientePorCodigo, values, (err, result) => {
@@ -61,6 +61,7 @@ module.exports = {
             res.render('clientes/edit-cliente.ejs', {
                 title: "Holoser | Editar Cliente"
                 , cliente: result[0]
+                , moment: moment
                 , message: ''
             });
         });
@@ -73,8 +74,7 @@ module.exports = {
             cpf: attr.cpf,
             telefone: attr.telefone,
             sexo: attr.sexo,
-            // dataNascimento: attr.dataNasc,
-            dataNascimento: '2019-01-01',
+            dataNascimento: moment(convertDate(attr.dataNasc)).format('YYYY-MM-DD'),
             rua: attr.rua,
             numero: parseInt(attr.numero),
             bairro: attr.bairro,
@@ -82,8 +82,20 @@ module.exports = {
             estado: attr.estado
         }
 
-        // let query = "UPDATE `players` SET `first_name` = '" + first_name + "', `last_name` = '" + last_name + "', `position` = '" + position + "', `number` = '" + number + "' WHERE `players`.`id` = '" + playerId + "'";
-        db.query(queries.editClienteQuery, (err, result) => {
+        values = [
+            [cliente.nome], 
+            [cliente.cpf], 
+            [cliente.telefone], 
+            [cliente.dataNascimento], 
+            [cliente.sexo], 
+            [cliente.rua], 
+            [cliente.numero], 
+            [cliente.bairro], 
+            [cliente.cidade], 
+            [cliente.estado],
+            [req.params.id]
+        ] 
+        db.query(queries.editClienteQuery, values, (err, result) => {
             if (err) {
                 return res.status(500).send(err);
             }
@@ -103,43 +115,16 @@ module.exports = {
     }
 };
 
+convertDate = function (dateString) {
+    var dateParts = dateString.split("/");
+    return new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]);
+}
+
 formatSexo = function (sexo) {
     switch (sexo) {
         case "M":
             return "Masculino";
         case "F":
             return "Feminino";
-    }
-}
-
-formatEstado = function (estado) {
-    switch (estado) {
-        case "AC": return "Acre"
-        case "AL": return "Alagoas"
-        case "AP": return "Amapá"
-        case "AM": return "Amazonas"
-        case "BA": return "Bahia"
-        case "CE": return "Ceará"
-        case "DF": return "Distrito Federal"
-        case "ES": return "Espírito Santo"
-        case "GO": return "Goiás"
-        case "MA": return "Maranhão"
-        case "MT": return "Mato Grosso"
-        case "MS": return "Mato Grosso do Sul"
-        case "MG": return "Minas Gerais"
-        case "PA": return "Pará"
-        case "PB": return "Paraíba"
-        case "PR": return "Paraná"
-        case "PE": return "Pernambuco"
-        case "PI": return "Piauí"
-        case "RJ": return "Rio de Janeiro"
-        case "RN": return "Rio Grande do Norte"
-        case "RS": return "Rio Grande do Sul"
-        case "RO": return "Rondônia"
-        case "RR": return "Roraima"
-        case "SC": return "Santa Catarina"
-        case "SP": return "São Paulo"
-        case "SE": return "Sergipe"
-        case "TO": return "Tocantins"
     }
 }

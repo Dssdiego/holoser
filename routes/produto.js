@@ -29,7 +29,7 @@ module.exports = {
             nome: attr.nome,
             marca: attr.marca,
             preco: attr.preco,
-            validade: attr.validade
+            validade: moment(convertDate(attr.validade)).format('YYYY-MM-DD')
         }
 
         values = [
@@ -45,6 +45,8 @@ module.exports = {
         });
     },
     editProdutoPage: (req, res) => {
+        moment.locale('pt-br');
+
         values = [[req.params.id]]
         db.query(queries.getProdutoPorCodigo, values, (err, result) => {
             if (err) {
@@ -53,6 +55,7 @@ module.exports = {
             res.render('produtos/edit-produto.ejs', {
                 title: "Holoser | Editar Produto"
                 , produto: result[0]
+                , moment: moment
                 , message: ''
             });
         });
@@ -64,12 +67,15 @@ module.exports = {
             nome: attr.nome,
             marca: attr.marca,
             preco: attr.preco,
-            validade: attr.validade
+            validade: moment(convertDate(attr.validade)).format('YYYY-MM-DD')
         }
 
-        // let query = "UPDATE `players` SET `first_name` = '" + first_name + "', `last_name` = '" + last_name + "', `position` = '" + position + "', `number` = '" + number + "' WHERE `players`.`id` = '" + playerId + "'";
         values = [
-            [produto.nome, produto.marca, produto.preco, produto.validade]
+            [produto.nome],
+            [produto.marca],
+            [produto.preco],
+            [produto.validade],
+            [req.params.id]
         ]
         db.query(queries.editProdutoQuery, values, (err, result) => {
             if (err) {
@@ -90,3 +96,8 @@ module.exports = {
         });
     }
 };
+
+convertDate = function (dateString) {
+    var dateParts = dateString.split("/");
+    return new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]);
+}

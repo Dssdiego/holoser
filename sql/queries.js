@@ -2,14 +2,14 @@
 module.exports.getClientesQuery = "SELECT * FROM sath_cliente";
 module.exports.getClientePorCodigo = "SELECT * FROM sath_cliente WHERE codigo = ?";
 module.exports.insertClienteQuery = "INSERT INTO sath_cliente (nome, cpf, telefone, dataNascimento, sexo, rua, numero, bairro, cidade, estado) VALUES (?)";
-module.exports.editClienteQuery = "UPDATE sath_cliente (nome, cpf, telefone, dataNascimento, sexo, rua, numero, bairro, cidade, estado) VALUES (?)";
+module.exports.editClienteQuery = "UPDATE sath_cliente SET nome = ?, cpf = ?, telefone = ?, dataNascimento = ?, sexo = ?, rua = ?, numero = ?, bairro = ?, cidade = ?, estado = ? WHERE codigo = ?";
 module.exports.deleteClienteQuery = "DELETE from sath_cliente WHERE codigo = ?";
 
 // Produtos
 module.exports.getProdutosQuery = "SELECT * FROM sath_produto";
 module.exports.getProdutoPorCodigo = "SELECT * FROM sath_produto WHERE codigo = ?";
 module.exports.insertProdutoQuery = "INSERT INTO sath_produto (nome, marca, preco, validade) VALUES (?)";
-module.exports.editProdutoQuery = "UPDATE sath_produto SET nome = ?, marca = ?, preco = ?, validade = ?";
+module.exports.editProdutoQuery = "UPDATE sath_produto SET nome = ?, marca = ?, preco = ?, validade = ? WHERE codigo = ?";
 module.exports.deleteProdutoQuery = "DELETE from sath_produto WHERE codigo = ?";
 
 // Atendimentos
