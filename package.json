@@ -15,7 +15,7 @@
     "bootstrap-material-design": "^4.1.1",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
-    "express-fileupload": "^0.4.0",
+    "express-fileupload": "^1.1.9",
     "moment": "^2.24.0",
     "mysql": "^2.15.0",
     "req-flash": "0.0.3"
