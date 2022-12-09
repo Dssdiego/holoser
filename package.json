@@ -11,10 +11,10 @@
   "author": ["Diego Seabra", "Túlio Reis"],
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.20.1",
     "bootstrap-material-design": "^4.1.1",
     "ejs": "^2.6.1",
-    "express": "^4.16.3",
+    "express": "^4.18.2",
     "express-fileupload": "^0.4.0",
     "moment": "^2.24.0",
     "mysql": "^2.15.0",
